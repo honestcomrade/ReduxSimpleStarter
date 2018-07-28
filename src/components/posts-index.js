@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class PostsIndex extends Component {
   render() {
     return (
-      <div>
+      <h3>
         All posts
-      </div>
+      </h3>
     );
   }
 }
