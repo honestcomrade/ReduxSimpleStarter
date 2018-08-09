@@ -38,18 +38,24 @@ class NewPost extends Component {
       </form>
     );
   };
+  
   onSubmit(values) {
     console.log(values);
-  }
+  };
+
   renderField(field) {
+    const { meta: { error, touched } } = field; 
+    const errorClass = `form-group ${touched && error ? 'has-danger' : ''}`
     return (
-      <div className="form-group">
+      <div className={errorClass}>
       <label htmlFor="">{field.Label}</label>
         <input className="form-control"
           type={field.type}
           {...field.input}
         />
-        <p>{field.meta.error}</p>
+        <div className="text-help">
+          <p>{touched ? error : ''}</p>
+        </div>
       </div>
     );
   };
@@ -57,11 +63,21 @@ class NewPost extends Component {
 
 const validate = (values) => {
   const errors = {};
-  for (const prop in values) {
-    if (!values[prop]) {
-      errors[prop] = `Missing value for ${prop}`;
-    }
-  };
+  // for (const prop in values) {
+  //   if (!values[prop]) {
+  //     errors[prop] = `Missing value for ${prop}`;
+  //     console.log(errors[prop]);
+  //   }
+  // };
+  if(!values.title) {
+    errors.title = 'Title must have 3 or more characters';
+  }
+  if(!values.categories) {
+    errors.categories = 'Must select at least one category';
+  }
+  if(!values.content) {
+    errors.content = 'Must have some content';
+  }
   return errors;
 }
 
