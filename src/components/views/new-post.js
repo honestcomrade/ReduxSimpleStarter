@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 class NewPost extends Component {
   render() {
@@ -30,11 +31,16 @@ class NewPost extends Component {
           type="checkbox"
           component={this.renderField}
         />
-        <button 
-          className="btn btn-success" 
-          type="submit"
-          >Submit
-        </button>
+          <button 
+            className="btn btn-outline-success" 
+            type="submit"
+            >Submit
+          </button>
+          <Link
+            className="btn btn-danger"
+            to="/posts"
+            >Cancel
+          </Link>
       </form>
     );
   };
