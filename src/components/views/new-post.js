@@ -32,7 +32,7 @@ class NewPost extends Component {
           component={this.renderField}
         />
           <button 
-            className="btn btn-outline-success" 
+            className="btn btn-success" 
             type="submit"
             >Submit
           </button>
