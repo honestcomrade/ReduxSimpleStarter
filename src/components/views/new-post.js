@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux';
+import { submitPost } from '../../actions';
 class NewPost extends Component {
   render() {
     const { handleSubmit } = this.props;
@@ -46,7 +47,8 @@ class NewPost extends Component {
   };
   
   onSubmit(values) {
-    console.log(values);
+    debugger;
+    this.props.submitPost(values);
   };
 
   renderField(field) {
@@ -69,12 +71,6 @@ class NewPost extends Component {
 
 const validate = (values) => {
   const errors = {};
-  // for (const prop in values) {
-  //   if (!values[prop]) {
-  //     errors[prop] = `Missing value for ${prop}`;
-  //     console.log(errors[prop]);
-  //   }
-  // };
   if(!values.title) {
     errors.title = 'Title must have 3 or more characters';
   }
@@ -90,4 +86,6 @@ const validate = (values) => {
 export default reduxForm({
   form: 'PostsNewForm',
   validate,
-})(NewPost);
+})(
+  connect(null, { submitPost })(NewPost)
+);
