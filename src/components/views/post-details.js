@@ -4,7 +4,9 @@ class PostDetails extends Component {
   render() {
     return (
       <div>
-        post details
+        <h4>
+          post details
+        </h4>
       </div>
     );
   }

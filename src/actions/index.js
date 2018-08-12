@@ -14,8 +14,9 @@ export const fetchPosts = () => {
   }
 }
 
-export const submitPost = (values) => {
-  const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, values);
+export const submitPost = (values, cb) => {
+  const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, values)
+  .then(() => cb());
   return {
     type: SUBMIT_POST,
     payload: request,
