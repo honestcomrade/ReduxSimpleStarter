@@ -16,6 +16,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
         <Switch>
+          {/* the order of routes matters when capturing the urls passed to the router */}
           <Route 
             path="/posts/new" 
             component={NewPost} />
