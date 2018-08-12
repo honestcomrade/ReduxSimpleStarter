@@ -47,7 +47,6 @@ class NewPost extends Component {
   };
   
   onSubmit(values) {
-    debugger;
     this.props.submitPost(values);
   };
 
